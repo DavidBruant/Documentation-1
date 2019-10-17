@@ -2,19 +2,19 @@
 
 This tutorial builds on a [previous tutorial](./first-contract.md). You may want to get familiar with it before continuing reading this page
 
-## Configuring the number to be guessed
+## Configuring the number of attempts
 
-We want to configure the contract so that it can be set up for the player to guess an arbitary number
+We want to configure the contract so that it can be set up for the player to have a limited number of attempts
 
 That's when we would be using the `terms`:
 
 Contract code (`guess.js`):
 ```js
-// Our contract defines that `terms` must be an object with a `toGuess` property
+// Our contract defines that `terms` must be an object with a `attemptsCount` property
 function guessContract(terms, inviteMaker) {
   const seat = harden({
     guess(attempt) {
-      return attempt === terms.toGuess ? 'you win' : 'you lose';
+      return attempt === terms.attemptsCount ? 'you win' : 'you lose';
     },
   });
 
